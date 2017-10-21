@@ -5,7 +5,12 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MariosSpeciality", "MariosSpeciality\MariosSpeciality.csproj", "{6EDCE88D-92C8-4115-8AD8-C20BB567E698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioSpecialityTests", "MarioSpecialityTests\MarioSpecialityTests.csproj", "{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarioSpecialityTests", "MarioSpecialityTests\MarioSpecialityTests.csproj", "{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C85888B0-D7C4-4687-B9B8-9C3EF235D223}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
