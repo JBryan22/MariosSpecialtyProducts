@@ -1,13 +1,12 @@
 @model MariosSpeciality.Models.Product
-
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details of</h2>
 
 <div>
-    <h4>Product</h4>
+    <h4>@Model.Name</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,11 +31,33 @@
             @Html.DisplayNameFor(model => model.ProductImg)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ProductImg)
+            @if (Model.ProductImg != null)
+            {
+                String img64 = Convert.ToBase64String(Model.ProductImg);
+                String img64Url = string.Format("data:image/" + Model.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                <img src="@img64Url" />
+            }
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+    <a href="@Url.Action("Edit", new { id = Model.ProductId})" class="btn btn-lg btn-info">
+        <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"></i>
+        <span>Edit</span>
+    </a> |
+    <a href="@Url.Action("Delete", new { id = Model.ProductId})" class="btn btn-lg btn-danger">
+        <i class="fa fa-2x fa-trash" aria-hidden="true"></i>
+        <span>Delete</span>
+    </a> |
+
+    <a href="@Url.Action("CreateReview", new { id = Model.ProductId})" class="btn btn-lg btn-warning">
+        <i class="fa fa-2x fa-commenting-o" aria-hidden="true"></i>
+        <span>Rreview Product</span>
+    </a> |
+
+    <a href="@Url.Action("Index")" class="btn btn-lg btn-default">
+        <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+        <span>Back to list</span>
+    </a>
 </div>

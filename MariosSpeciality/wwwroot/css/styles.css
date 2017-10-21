@@ -72,3 +72,7 @@ h2.blogTitle {
 h1 {
     font-family: initial;
 }
+img.deckImg{
+    height: 400px;
+    width: 600px;
+}

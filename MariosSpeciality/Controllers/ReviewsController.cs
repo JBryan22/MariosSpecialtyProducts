@@ -2,6 +2,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MariosSpeciality.Models;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace MariosSpeciality.Controllers
 {
@@ -48,8 +51,9 @@ namespace MariosSpeciality.Controllers
         }
 
         // GET: Reviews/Create
-        public IActionResult Create()
+        public IActionResult Create(int? productId)
         {
+            ViewBag.ProductId = productId;
             //ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "ProductId");
             return View();
         }
@@ -59,15 +63,31 @@ namespace MariosSpeciality.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("ReviewId,Author,ContntBody,Rating,AuthorImg,ProductId")] Review review)
+        public IActionResult Create([Bind("ReviewId,Author,ContntBody,Rating,AuthorImg,ProductId")] Review review, ICollection<IFormFile> files)
         {
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        byte[] fileBytes = ms.ToArray();
+                        review.AuthorImg = fileBytes;
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 _context.Save(review);
                 return RedirectToAction("Index");
             }
             //ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductId", review.ProductId);
-            return View(review);
+            return RedirectToAction("Index", "Products");
+        }
+        public IActionResult RedirectToProduct(int productId)
+        {
+            return RedirectToAction("Details", "Products", new { id = productId });
         }
 
         // GET: Reviews/Edit/5

@@ -1,59 +1,47 @@
 @model IEnumerable<MariosSpeciality.Models.Review>
 
-@{
-    ViewData["Title"] = "Index";
-}
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Author)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContntBody)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Rating)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AuthorImg)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContntBody)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorImg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReviewId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReviewId">Delete</a>
-            </td>
-        </tr>
+@if (Model == null)
+{
+    <h1>@ViewBag.NotFound</h1>
+    <img src="~/images/Web-under-construction.jpg" style="height: 700px; widows: 1000px;" />
+
 }
-    </tbody>
-</table>
+else
+{
+    <h1>Reviews</h1>
+    <div>
+        <a href="@Url.Action("Create")" class="btn btn-lg btn-primary">
+            <i class="fa fa-2x fa-plus" aria-hidden="true"> <span>    Create</span></i>
+        </a>
+    </div>
+    foreach (var review in Model)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                @if (review.AuthorImg != null)
+                {
+                    String img64 = Convert.ToBase64String(review.AuthorImg);
+                    String img64Url = string.Format("data:image/" + review.AuthorImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                    <a target="_blank" href="@Url.Action("Details", new { id = review.ReviewId})">
+                        <img class="thumbnails deckImg" src="@img64Url" alt="reviewer image" />
+                    </a>
+                    <br />
+                }
+                <br /><br />
+            </div>
+            <div class="col-md-8">
+                @*<div class="card-block">
+                    <h3><em>@review.reviewDate.ToString("MM/dd/yyy")</em></h3>
+                    <h1><em>By: @review.User.FirstName @review.User.LastName</em></h1>
+                    <a href="@Url.Action("Details", new { id = review.reviewId})"><h2 class="reviewTitle" class="card-title">@review.reviewTitle</h2></a>
+                </div>*@
+                @*<div class="card-block">
+                    <h1>@review.reviewContent.Substring(0, 150)...</h1>
+                </div>*@
+            </div>
+        </div>
+
+    }
+}

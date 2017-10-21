@@ -2,61 +2,46 @@
 
 @{
     ViewData["Title"] = "Create";
+    var productId = ViewBag.ProductId;
 }
 
-<h2>Create</h2>
-
-<form asp-action="Create">
+<h1>Create</h1>
+@using (Html.BeginForm("Create", "Review", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h2>Blog</h2><hr />
     <div class="form-horizontal">
-        <h4>Review</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Author" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
+            <input type="hidden" name="ProductId" value="@ViewBag.ProductId" />
+             @Html.LabelFor(model => model.Author, new { @class = "col-md-2 label-control" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ContntBody" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ContntBody" class="form-control" />
-                <span asp-validation-for="ContntBody" class="text-danger"></span>
+            @Html.LabelFor(model => model.ContntBody, new { @class = "col-md-2 label-control" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.ContntBody, new { @class = "form-control", @rows = 10 })
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Rating" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
+            @Html.LabelFor(model => model.AuthorImg, new { @class = "col-md-2 label-control" })
+            <div class="col-md-6">
+                <input type="file" id="files" name="files" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AuthorImg" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AuthorImg" class="form-control" />
-                <span asp-validation-for="AuthorImg" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ProductId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="ProductId" class ="form-control" asp-items="ViewBag.ProductId"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <input type="submit" value="Create" class="btn btn-lg btn-primary" />
             </div>
         </div>
     </div>
-</form>
-
+}
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a href="@Url.Action("RedirectToProduct", new { productId = productId } )" class="btn btn-lg btn-default">
+        <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+        <span>Back to product</span>
+    </a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

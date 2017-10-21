@@ -2,7 +2,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MariosSpeciality.Models;
-
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MariosSpeciality.Controllers
 {
@@ -57,8 +59,22 @@ namespace MariosSpeciality.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("ProductId,Name,Cost,CountryOfOrigin,ProductImg")] Product product)
+        public IActionResult Create([Bind("ProductId,Name,Cost,CountryOfOrigin,ProductImg")] Product product, ICollection<IFormFile> files)
         {
+
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        byte[] fileBytes = ms.ToArray();
+                        product.ProductImg = fileBytes;
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Save(product);
@@ -88,9 +104,20 @@ namespace MariosSpeciality.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind("ProductId,Name,Cost,CountryOfOrigin,ProductImg")] Product product)
+        public IActionResult Edit([Bind("ProductId,Name,Cost,CountryOfOrigin,ProductImg")] Product product, ICollection<IFormFile> files)
         {
-
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        byte[] fileBytes = ms.ToArray();
+                        product.ProductImg = fileBytes;
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -139,6 +166,11 @@ namespace MariosSpeciality.Controllers
             var product = _context.Products.SingleOrDefault(m => m.ProductId == id);
             _context.Remove(product);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult CreateReview(int id)
+        {
+            return RedirectToAction("Create", "Reviews", new { productId = id });
         }
 
         private bool ProductExists(int id)
