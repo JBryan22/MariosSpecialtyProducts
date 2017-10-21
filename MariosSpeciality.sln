@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MariosSpeciality", "MariosSpeciality\MariosSpeciality.csproj", "{6EDCE88D-92C8-4115-8AD8-C20BB567E698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioSpecialityTests", "MarioSpecialityTests\MarioSpecialityTests.csproj", "{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EDCE88D-92C8-4115-8AD8-C20BB567E698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDCE88D-92C8-4115-8AD8-C20BB567E698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDCE88D-92C8-4115-8AD8-C20BB567E698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDCE88D-92C8-4115-8AD8-C20BB567E698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D0A6E7-EC68-4F40-A3E4-E5F422283B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B9C3733-0378-4A29-A0E8-3B74FC7718A6}
+	EndGlobalSection
+EndGlobal

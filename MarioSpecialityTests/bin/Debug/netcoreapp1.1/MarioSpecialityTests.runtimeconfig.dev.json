@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\mgebr\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\mgebr\\.nuget\\packages"
+    ]
+  }
+}
