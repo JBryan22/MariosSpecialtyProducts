@@ -8,9 +8,10 @@ using MariosSpeciality.Models;
 namespace MariosSpeciality.Migrations
 {
     [DbContext(typeof(MariosDbContext))]
-    partial class MariosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171022085939_AddContentLengthAttribute")]
+    partial class AddContentLengthAttribute
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -57,8 +58,7 @@ namespace MariosSpeciality.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<string>("Rating")
-                        .IsRequired();
+                    b.Property<int>("Rating");
 
                     b.HasKey("ReviewId");
 

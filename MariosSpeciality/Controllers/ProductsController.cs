@@ -27,7 +27,7 @@ namespace MariosSpeciality.Controllers
         // GET: Products
         public IActionResult Index()
         {
-            return View(_context.Products.ToList());
+            return View(_context.Products.Include(p => p.Reviews).ToList());
         }
 
         // GET: Products/Details/5

@@ -8,9 +8,10 @@ using MariosSpeciality.Models;
 namespace MariosSpeciality.Migrations
 {
     [DbContext(typeof(MariosDbContext))]
-    partial class MariosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171022070424_AddDateTimeStampToTables")]
+    partial class AddDateTimeStampToTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");
@@ -25,8 +26,7 @@ namespace MariosSpeciality.Migrations
                     b.Property<string>("CountryOfOrigin")
                         .IsRequired();
 
-                    b.Property<DateTime>("DatePosted")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("DatePosted");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -49,16 +49,13 @@ namespace MariosSpeciality.Migrations
                     b.Property<byte[]>("AuthorImg");
 
                     b.Property<string>("ContentBody")
-                        .IsRequired()
-                        .HasMaxLength(250);
+                        .IsRequired();
 
-                    b.Property<DateTime>("PostedDate")
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<DateTime>("PostedDate");
 
                     b.Property<int>("ProductId");
 
-                    b.Property<string>("Rating")
-                        .IsRequired();
+                    b.Property<int>("Rating");
 
                     b.HasKey("ReviewId");
 

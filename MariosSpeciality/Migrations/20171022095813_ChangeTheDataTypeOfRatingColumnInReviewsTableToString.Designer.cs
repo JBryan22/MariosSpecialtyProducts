@@ -8,9 +8,10 @@ using MariosSpeciality.Models;
 namespace MariosSpeciality.Migrations
 {
     [DbContext(typeof(MariosDbContext))]
-    partial class MariosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171022095813_ChangeTheDataTypeOfRatingColumnInReviewsTableToString")]
+    partial class ChangeTheDataTypeOfRatingColumnInReviewsTableToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2");

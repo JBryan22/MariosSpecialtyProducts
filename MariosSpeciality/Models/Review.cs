@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MariosSpeciality.Models
 {
@@ -6,10 +8,21 @@ namespace MariosSpeciality.Models
     {
         [Key]
         public int ReviewId { get; set; }
+
+        [Required]
         public string Author { get; set; }
-        public string ContntBody { get; set; }
-        public int Rating { get; set; }
+
+        [Required]
+        [MaxLength(250), MinLength(50)]
+        public string ContentBody { get; set; }
+
+        [Required]
+        public string Rating { get; set; }
         public byte[] AuthorImg { get; set; }
+
+        [DisplayFormat(DataFormatString = "0:F")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime PostedDate { get; set; }
 
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }

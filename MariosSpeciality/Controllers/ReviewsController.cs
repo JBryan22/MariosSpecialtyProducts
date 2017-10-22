@@ -63,7 +63,7 @@ namespace MariosSpeciality.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("ReviewId,Author,ContntBody,Rating,AuthorImg,ProductId")] Review review, ICollection<IFormFile> files = null)
+        public IActionResult Create([Bind("ReviewId,Author,ContentBody,Rating,AuthorImg,ProductId")] Review review, ICollection<IFormFile> files = null)
         {
             if (files != null)
             {
@@ -83,10 +83,10 @@ namespace MariosSpeciality.Controllers
             if (ModelState.IsValid)
             {
                 _context.Save(review);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Products");
             }
-            //ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductId", review.ProductId);
-            return RedirectToAction("Index", "Products");
+            ViewData["ProductId"] = review.ProductId;
+            return View(review);
         }
         public IActionResult RedirectToProduct(int productId)
         {

@@ -15,16 +15,34 @@
              @Html.LabelFor(model => model.Author, new { @class = "col-md-2 label-control" })
             <div class="col-md-6">
                 @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Author, null, new { @class = "text-danger" })
+
+
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.ContntBody, new { @class = "col-md-2 label-control" })
+            @Html.LabelFor(model => model.ContentBody, new { @class = "col-md-2 label-control" })
             <div class="col-md-6">
-                @Html.TextAreaFor(model => model.ContntBody, new { @class = "form-control", @rows = 10 })
+                @Html.TextAreaFor(model => model.ContentBody, new { @class = "form-control", @rows = 10 })
+                @Html.ValidationMessageFor(m => m.ContentBody, null, new { @class = "text-danger" })
+
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rating, new { @class = "col-md-2 label-control" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Rating, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Rating, null, new { @class = "text-danger" })
+
+
+
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.AuthorImg, new { @class = "col-md-2 label-control" })
+
             <div class="col-md-6">
                 <input type="file" id="files" name="files" />
             </div>
@@ -32,7 +50,7 @@
         <div class="form-group">
             <div class="col-md-2"></div>
             <div class="col-md-6">
-                <input type="submit" value="Create" class="btn btn-lg btn-primary" />
+                <input type="submit" value="Create" formmethod="post" class="btn btn-lg btn-primary" />
             </div>
         </div>
     </div>

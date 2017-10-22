@@ -17,27 +17,38 @@ else
         <a href="@Url.Action("Create")" class="btn btn-lg btn-primary">
             <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
             <span>Create New </span>
+
         </a>
     </p>
+    <hr />
 
 
     <div class="card-deck">
         @foreach (var product in Model)
         {
-            <div class="card">
-                @if (product.ProductImg != null)
-                {
-                    String img64 = Convert.ToBase64String(product.ProductImg);
-                    String img64Url = string.Format("data:image/" + product.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
-                    <a href="@Url.Action("Details", new { id = product.ProductId})"><img class="deckImg" src="@img64Url" alt="@product.ProductImg" /></a>
-                }
-                <div class="card-block">
-                    <h4 class="card-title">@product.Name</h4>
+            <a href="@Url.Action("Details", new { id = product.ProductId})">
+                <div class="card product">
+                    @if (product.ProductImg != null)
+                    {
+                        String img64 = Convert.ToBase64String(product.ProductImg);
+                        String img64Url = string.Format("data:image/" + product.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                        <a href="@Url.Action("Details", new { id = product.ProductId})"><img class="deckImg" src="@img64Url" alt="@product.ProductImg" /></a>
+                    }
+                    <div class="card-block">
+                        <h4 class="card-title">@product.Name</h4>
+                    </div>
+                    <div>
+                        @if (product.Reviews != null)
+                        {
+                            <h4>Total Review: <span class="badge">@product.Reviews.Count()</span></h4>
+                            <h4>Average Rating: @product.AverageRating()</h4>
+	                    }
+                    </div>
+                    @*<div class="card-block">
+                            <a href="@Url.Action("Details", new { id = product.ProductId})" class="btn btn-lg btn-info">Details</a>
+                        </div>*@
                 </div>
-                @*<div class="card-block">
-                    <a href="@Url.Action("Details", new { id = product.ProductId})" class="btn btn-lg btn-info">Details</a>
-                </div>*@
-            </div>
+            </a>
         }
     </div>
 }

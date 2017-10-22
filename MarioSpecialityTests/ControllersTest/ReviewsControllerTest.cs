@@ -26,9 +26,9 @@ namespace MarioSpecialityTests.ControllersTest
         {
             var querableReviewArray = new Review[] 
             {
-                new Review(){ReviewId = 1, Author = "Mike", ContntBody = "Awesome", Rating = 4, ProductId = 1},
-                new Review(){ReviewId = 2, Author = "Kaili", ContntBody = "Awesome", Rating = 5, ProductId = 1},
-                new Review(){ReviewId = 3, Author = "Jesse", ContntBody = "Awesome", Rating = 3, ProductId = 1}
+                new Review(){ReviewId = 1, Author = "Mike", ContentBody = "Awesome", Rating = "4", ProductId = 1},
+                new Review(){ReviewId = 2, Author = "Kaili", ContentBody = "Awesome", Rating = "5", ProductId = 1},
+                new Review(){ReviewId = 3, Author = "Jesse", ContentBody = "Awesome", Rating = "3", ProductId = 1}
 
             }.AsQueryable();
             mock.Setup(m => m.Reviews).Returns(querableReviewArray);
@@ -68,7 +68,7 @@ namespace MarioSpecialityTests.ControllersTest
             //Arrange
             var reviewController = new ReviewsController(mock.Object);
             var indexViewResult = reviewController.Index() as ViewResult;
-            var testReview = new Review() { ReviewId = 1, Author = "Mike", ContntBody = "Awesome", Rating = 4, ProductId = 1 };
+            var testReview = new Review() { ReviewId = 1, Author = "Mike", ContentBody = "Awesome", Rating = "4", ProductId = 1 };
 
             //Act
             var collection = indexViewResult.ViewData.Model as List<Review>;
@@ -105,7 +105,7 @@ namespace MarioSpecialityTests.ControllersTest
             productController.Create(testProduct);
             var productId = dbp.Products.ToList()[0].ProductId;
             var reviewController = new ReviewsController(db);
-            var testReview = new Review() { Author = "Mike", ContntBody = "Awesome", Rating = 4, ProductId = productId };
+            var testReview = new Review() { Author = "Mike", ContentBody = "Awesome", Rating = "4", ProductId = productId };
 
             //Act
             reviewController.Create(testReview, null);
@@ -200,7 +200,7 @@ namespace MarioSpecialityTests.ControllersTest
             };
             productController.Create(testProduct, null);
             var productId = dbp.Products.ToList()[0].ProductId;
-            var testReview = new Review() { Author = "Mike", ContntBody = "Awesome", Rating = 4, ProductId = productId };
+            var testReview = new Review() { Author = "Mike", ContentBody = "Awesome", Rating = "4", ProductId = productId };
             reviewController.Create(testReview, null);
         }
     }

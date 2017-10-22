@@ -3,10 +3,23 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details of</h2>
+<div class="row">
+    <div class="col-md-3">
+        <h2>Details of</h2>
+        <h4>@Model.Name</h4>
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-3">
+        <a href="@Url.Action("Index")" class="btn btn-lg btn-default">
+            <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+            <span>Back to list</span>
+        </a>
+    </div>
+</div>
+
 
 <div>
-    <h4>@Model.Name</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,9 +40,6 @@
         <dd>
             @Html.DisplayFor(model => model.CountryOfOrigin)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImg)
-        </dt>
         <dd>
             @if (Model.ProductImg != null)
             {
@@ -41,7 +51,7 @@
     </dl>
 </div>
 <div>
-
+    <hr />
     <a href="@Url.Action("Edit", new { id = Model.ProductId})" class="btn btn-lg btn-info">
         <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"></i>
         <span>Edit</span>
