@@ -63,17 +63,20 @@ namespace MariosSpeciality.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("ReviewId,Author,ContntBody,Rating,AuthorImg,ProductId")] Review review, ICollection<IFormFile> files)
+        public IActionResult Create([Bind("ReviewId,Author,ContntBody,Rating,AuthorImg,ProductId")] Review review, ICollection<IFormFile> files = null)
         {
-            foreach (var file in files)
+            if (files != null)
             {
-                if (file.Length > 0)
+                foreach (var file in files)
                 {
-                    using (MemoryStream ms = new MemoryStream())
+                    if (file.Length > 0)
                     {
-                        file.CopyTo(ms);
-                        byte[] fileBytes = ms.ToArray();
-                        review.AuthorImg = fileBytes;
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            file.CopyTo(ms);
+                            byte[] fileBytes = ms.ToArray();
+                            review.AuthorImg = fileBytes;
+                        }
                     }
                 }
             }

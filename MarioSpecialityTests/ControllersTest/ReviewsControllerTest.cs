@@ -84,7 +84,7 @@ namespace MarioSpecialityTests.ControllersTest
             var reviewController = new ReviewsController(db);
 
             //Act
-            var indexViewResult = reviewController.Create() as ViewResult;
+            var indexViewResult = reviewController.Create(null) as ViewResult;
 
             //Assert
             Assert.IsInstanceOfType(indexViewResult, typeof(IActionResult));
@@ -108,7 +108,7 @@ namespace MarioSpecialityTests.ControllersTest
             var testReview = new Review() { Author = "Mike", ContntBody = "Awesome", Rating = 4, ProductId = productId };
 
             //Act
-            reviewController.Create(testReview);
+            reviewController.Create(testReview, null);
             var collection = db.Reviews.ToList();
 
             //Assert
@@ -198,10 +198,10 @@ namespace MarioSpecialityTests.ControllersTest
                 CountryOfOrigin = "Ethiopia",
                 ProductImg = null
             };
-            productController.Create(testProduct);
+            productController.Create(testProduct, null);
             var productId = dbp.Products.ToList()[0].ProductId;
             var testReview = new Review() { Author = "Mike", ContntBody = "Awesome", Rating = 4, ProductId = productId };
-            reviewController.Create(testReview);
+            reviewController.Create(testReview, null);
         }
     }
 }

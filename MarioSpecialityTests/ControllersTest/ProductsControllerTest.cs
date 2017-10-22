@@ -145,7 +145,7 @@ namespace MarioSpecialityTests.ControllersTest
 
             //Act
             productToEdit.CountryOfOrigin = "Mexico";
-            productController.Edit(productToEdit);
+            productController.Edit(productToEdit, null);
             var indexViewResult = productController.Index() as ViewResult;
             var collection = indexViewResult.ViewData.Model as List<Product>;
             //Assert
@@ -198,7 +198,7 @@ namespace MarioSpecialityTests.ControllersTest
                 CountryOfOrigin = "Ethiopia",
                 ProductImg = null
             };
-            productController.Create(testProduct);
+            productController.Create(testProduct, null);
             return testProduct;
         }
     }
