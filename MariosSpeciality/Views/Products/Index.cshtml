@@ -4,7 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 @if(Model == null)
 {
     <img src="~/images/Web-under-construction.jpg" alt="under construction" style="height: 700px; widows: 1000px;" />
@@ -25,21 +24,20 @@ else
     <div class="card-deck">
         @foreach (var product in Model)
         {
-
             <div class="card">
                 @if (product.ProductImg != null)
                 {
                     String img64 = Convert.ToBase64String(product.ProductImg);
                     String img64Url = string.Format("data:image/" + product.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
-                    <img class="deckImg" src="@img64Url" alt="@product.ProductImg" />
+                    <a href="@Url.Action("Details", new { id = product.ProductId})"><img class="deckImg" src="@img64Url" alt="@product.ProductImg" /></a>
                 }
                 <div class="card-block">
                     <h4 class="card-title">@product.Name</h4>
                 </div>
-                <div class="card-block">
+                @*<div class="card-block">
                     <a href="@Url.Action("Details", new { id = product.ProductId})" class="btn btn-lg btn-info">Details</a>
-                </div>
+                </div>*@
             </div>
         }
     </div>
-    }
+}

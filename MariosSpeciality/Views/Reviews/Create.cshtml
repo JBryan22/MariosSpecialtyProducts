@@ -6,9 +6,9 @@
 }
 
 <h1>Create</h1>
-@using (Html.BeginForm("Create", "Review", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Reviews", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <h2>Blog</h2><hr />
+    <h2>Review</h2><hr />
     <div class="form-horizontal">
         <div class="form-group">
             <input type="hidden" name="ProductId" value="@ViewBag.ProductId" />
@@ -44,4 +44,3 @@
     </a>
 </div>
 
-}

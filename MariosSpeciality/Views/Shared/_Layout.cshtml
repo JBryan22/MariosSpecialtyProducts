@@ -17,26 +17,32 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse inverse">
+    <nav class="navbar navbar-toggleable-md navbar-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="@Url.Action("Index", "Home")">Mario's Speciality Food Products</a>
-
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <li>
+                    <a class="navbar-brand-logo" href="@Url.Action("Index", "Home")"> <img src="~/images/mcflogo.png" /></a>
+                </li>
+
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Index", "Products")">Products</a>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "Reviews")">Reviews</a>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Products")">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Reviews")">Reviews</a>
                 </li>
                 @*<li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "Users")">Users</a>
+                    <a class="nav-link disabled" href="#">Disabled</a>
                 </li>*@
             </ul>
         </div>
     </nav>
+    <hr />
     <div class="container body-content">
         @RenderBody()
         <hr />

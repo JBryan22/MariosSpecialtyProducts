@@ -4,7 +4,7 @@
     max-width: 100%;
     height: auto;
     width: 100%;
-    height: 400px;
+    height: 300px;
     max-height: 100%;
 }
 
@@ -16,16 +16,20 @@
 }
 
 a.nav-link {
-    font-size: large;
+    font-size: small;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 a.navbar-brand {
+    font-size: 15px;
+    font-family: fantasy;
+}
+a.navbar-brand-logo {
     font-size: 30px;
     font-family: fantasy;
 }
 
-dd, dt, p, th, td, input, a, span, i {
+dd, dt, p, th, td, input, span, i {
     margin-bottom: .5rem;
     font-size: large;
 }
@@ -72,7 +76,21 @@ h2.blogTitle {
 h1 {
     font-family: initial;
 }
-img.deckImg{
-    height: 400px;
-    width: 600px;
+img.deckImg {
+    height: 200px;
+    width: 200px;
+    margin-left: 65px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+
 }
+    img.deckImg:hover {
+        transform: scale(1.1);
+        opacity: 0.2;
+        cursor: pointer;
+        titl
+    }
+.card-title {
+        margin-left: 100px;
+    }
