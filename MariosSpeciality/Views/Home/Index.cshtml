@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -53,93 +54,56 @@
     </a>
 </div>
 <div>
-    <hr />
-    <br />
-    <h2 style="text-align: center">OUR TOP THREE HIGHLY RATED PRODUCTS</h2>
-    <br />
-    <hr />
-</div>
-<div class="card-deck">
-    <div class="card">
-        <div class="card-block">
-            <h2 class="card-title">Kitfo(5 STARS)</h2>
-            <p class="card-text">We all know the story. The Pilgrims were floating about looking for some 
-            new digs when they ran out of beer. So, they pulled the Mayflower over, landed in the U.S. 
-            and began searching for stuff they could brew with. They stumbled over some pumpkins, 
-            gave thanks and voila! The Pumpkin beer craze was born. The beer became so popular 
-            that brewers started making it available to the natives around August. Well, maybe 
-        </div>
-        <img class="card-img-top" src="~/images/banner1.png" alt="Card image cap">
-    </div>
-    <div class="card">
-        <div class="card-block">
-            <h2 class="card-title">Vegie Combo(4.8 STARS)</h2>
-            <p class="card-text">
-                As Mythbusters' ballistics expert, Alex Jones, has said, "Remember kids, the only 
-                difference between screwing around and science is writing it down."
+</div><hr />
+<br />
+<h2 style="text-align: center">OUR TOP THREE HIGHLY RATED PRODUCTS</h2>
+<br />
+<hr />
 
-            </p>
-        </div>
-        <img class="card-img-top" src="~/images/specialVegie.jpg" alt="Card image cap">
-    </div>
-    <div class="card">
-        <div class="card-block">
-            <h2 class="card-title">Beef Tibs(4.4 STARS)</h2>
-            <p class="card-text">
-                Mitch Ermatinger spent a late July evening completely redefining his production calendar.
+@if (ViewBag.model != null)
+{
+    <div class="card-deck">
 
-                As the owner of Speciation Artisan Ales in Grand Rapids, Michigan, 
-                he has the luxury of making the drastic changes late into the year.
-                Ermatinger also has the comfort of being at the helm of the two-employee operation,
-                which will finish the year making approximately 150 barrels of beer.
-
-            </p>
-        </div>
-        <img class="card-img-top" src="~/images/tibs.jpg" alt="Card image cap">
+        @foreach (Product item in ViewBag.model["topThreeRated"])
+        {
+            <div class="card">
+                <div class="card-block">
+                    <h2 class="card-title">@item.Name-@item.AverageRating()</h2>
+                    <p class="card-text"></p>
+                </div>
+                <img class="card-img-top" src="~/images/banner1.png" alt="Card image cap">
+                <hr />
+                <br />
+            </div>
+        }
     </div>
-</div>
+    <div>
+        <h2 style="text-align: center">OUR MOST RECENTLY ADDED PRODUCTS</h2>
+        <br />
+        <hr />
+    </div>
+
+    <div class="card-deck">
+
+        @foreach (Product item in ViewBag.model["topThreeRated"])
+        {
+            <div class="card">
+                <div class="card-block">
+                    <h2 class="card-title">@item.Name-@item.AverageRating()</h2>
+                    <p class="card-text"></p>
+                </div>
+                <img class="card-img-top" src="~/images/banner1.png" alt="Card image cap">
+                <hr />
+                <br />
+            </div>
+        }
+    </div>
+
+}
+
 
 <div>
-    <hr />
-    <br />
     <h2 style="text-align: center">OUR MOST RECENTLY ADDED PRODUCTS</h2>
     <br />
     <hr />
-</div>
-<div class="card-deck">
-    <div class="card">
-        <div class="card-block">
-            <h2 class="card-title">Kitfo(5 STARS)</h2>
-            <p class="card-text">We all know the story. The Pilgrims were floating about 
-            looking for some new digs when they ran out of beer. So, they pulled the Mayflower 
-            over, landed in the U.S. and began searching for stuff they could brew with. 
-            They stumbled over some pumpkins, gave thanks and voila! The Pumpkin beer craze was born. 
-            The beer became so popular that brewers started making it available to the natives around August. 
-        </div>
-        <img class="card-img-top" src="~/images/banner1.png" alt="Card image cap">
-    </div>
-    <div class="card">
-        <div class="card-block">
-            <h2 class="card-title">Vegie Combo(4.8 STARS)</h2>
-            <p class="card-text">
-                As Mythbusters' ballistics expert, Alex Jones, has said, "Remember kids, 
-                the only difference between screwing around and science is writing it down."
-
-            </p>
-        </div>
-        <img class="card-img-top" src="~/images/specialVegie.jpg" alt="Card image cap">
-    </div>
-    <div class="card">
-        <div class="card-block">
-            <h2 class="card-title">Beef Tibs(4.4 STARS)</h2>
-            <p class="card-text">
-
-                As the owner of Speciation Artisan Ales in Grand Rapids, Michigan, 
-                he has the luxury of making the drastic changes late into the year. 
-                Ermatinger also has the comfort of being at the helm of the two-employee
-                operation, which will finish the year making approximately 150 barrels of beer.
-            </p>
-        </div>
-        <img class="card-img-top" src="~/images/tibs.jpg" alt="Card image cap">
-    </div>
 </div>

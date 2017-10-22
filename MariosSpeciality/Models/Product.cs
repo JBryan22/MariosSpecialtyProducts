@@ -43,12 +43,16 @@ namespace MariosSpeciality.Models
         {
             double rating = 0;
             double totalRating = 0;
-            int totalReview = Reviews.Count;
-            foreach (var review in this.Reviews)
+            if (Reviews != null)
             {
-                totalRating += int.Parse(review.Rating);
+                int totalReview = Reviews.Count;
+                foreach (var review in this.Reviews)
+                {
+                    totalRating += int.Parse(review.Rating);
+                }
+                rating = totalRating / totalReview;
             }
-            return totalRating / totalReview;
+            return rating;
         }
     }
 }
