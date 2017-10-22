@@ -1,6 +1,8 @@
 @model IEnumerable<MariosSpeciality.Models.Review>
 
-
+@{ 
+//Layout = null;
+}
 
 @if (Model == null)
 {
@@ -10,38 +12,29 @@
 }
 else
 {
-    <h1>Reviews</h1>
-    <div>
-        <a href="@Url.Action("Create")" class="btn btn-lg btn-primary">
-            <i class="fa fa-2x fa-plus" aria-hidden="true"> <span>    Create</span></i>
-        </a>
-    </div>
+    <h1>Reviews <span class="badge">@Model.Count()</span></h1>
+
     foreach (var review in Model)
     {
-        <div class="row">
-            <div class="col-md-4">
                 @if (review.AuthorImg != null)
                 {
-                    String img64 = Convert.ToBase64String(review.AuthorImg);
-                    String img64Url = string.Format("data:image/" + review.AuthorImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
                     <a target="_blank" href="@Url.Action("Details", new { id = review.ReviewId})">
-                        <img class="thumbnails deckImg" src="@img64Url" alt="reviewer image" />
+                      <h4>@review.Author: @review.PostedDate</h4>
+                        <h1>@review.ContentBody.Substring(0, 100)...</h1>
                     </a>
                     <br />
                 }
                 <br /><br />
-            </div>
-            <div class="col-md-8">
-                @*<div class="card-block">
+            @*<div class="col-md-8">
+                <div class="card-block">
                     <h3><em>@review.reviewDate.ToString("MM/dd/yyy")</em></h3>
                     <h1><em>By: @review.User.FirstName @review.User.LastName</em></h1>
                     <a href="@Url.Action("Details", new { id = review.reviewId})"><h2 class="reviewTitle" class="card-title">@review.reviewTitle</h2></a>
-                </div>*@
-                @*<div class="card-block">
+                </div>
+                <div class="card-block">
                     <h1>@review.reviewContent.Substring(0, 150)...</h1>
-                </div>*@
-            </div>
-        </div>
+                </div>
+            </div>*@
 
     }
 }
