@@ -10610,11 +10610,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MariosSpeciality\\MariosSpeciality.csproj",
+      "projectUniqueName": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MariosSpeciality\\MariosSpeciality.csproj",
       "projectName": "MariosSpeciality",
-      "projectPath": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MariosSpeciality\\MariosSpeciality.csproj",
+      "projectPath": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MariosSpeciality\\MariosSpeciality.csproj",
       "packagesPath": "C:\\Users\\mgebr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MariosSpeciality\\obj\\",
+      "outputPath": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MariosSpeciality\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mgebr\\AppData\\Roaming\\NuGet\\NuGet.Config",

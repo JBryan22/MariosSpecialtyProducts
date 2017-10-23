@@ -11758,11 +11758,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MarioSpecialityTests\\MarioSpecialityTests.csproj",
+      "projectUniqueName": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MarioSpecialityTests\\MarioSpecialityTests.csproj",
       "projectName": "MarioSpecialityTests",
-      "projectPath": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MarioSpecialityTests\\MarioSpecialityTests.csproj",
+      "projectPath": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MarioSpecialityTests\\MarioSpecialityTests.csproj",
       "packagesPath": "C:\\Users\\mgebr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MarioSpecialityTests\\obj\\",
+      "outputPath": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MarioSpecialityTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mgebr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11779,8 +11779,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MariosSpeciality\\MariosSpeciality.csproj": {
-              "projectPath": "C:\\Users\\mgebr\\Desktop\\MariosSpeciality\\MariosSpeciality\\MariosSpeciality.csproj"
+            "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MariosSpeciality\\MariosSpeciality.csproj": {
+              "projectPath": "C:\\Users\\mgebr\\Desktop\\MariosSpecialtyProducts\\MariosSpeciality\\MariosSpeciality.csproj"
             }
           }
         }

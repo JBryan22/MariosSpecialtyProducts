@@ -21,7 +21,7 @@ namespace MariosSpeciality.Models
         public byte[] AuthorImg { get; set; }
 
         [DisplayFormat(DataFormatString = "0:F")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]//to assign current time stamp
         public DateTime PostedDate { get; set; }
 
         public int ProductId { get; set; }
@@ -30,11 +30,11 @@ namespace MariosSpeciality.Models
         public override bool Equals(object otherReview)
         {
             var newReview = otherReview as Review;
-            return this.ReviewId.Equals(newReview.ReviewId);
+            return ReviewId.Equals(newReview.ReviewId);
         }
         public override int GetHashCode()
         {
-            return this.ReviewId.GetHashCode();
+            return ReviewId.GetHashCode();
         }
     }
 }

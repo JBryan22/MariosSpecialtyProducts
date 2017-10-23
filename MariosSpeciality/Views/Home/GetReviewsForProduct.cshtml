@@ -1,0 +1,52 @@
+@model MariosSpeciality.Models.Product
+
+@{
+    ViewData["Title"] = "GetReviewsForProduct";
+}
+
+<h2>Product Reviews</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="@Url.Action("Index")" class="btn btn-lg btn-default">
+            <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+            <span>Back to list</span>
+        </a>
+    </div>
+</div>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dd>
+            @if (Model.ProductImg != null)
+            {
+                String img64 = Convert.ToBase64String(Model.ProductImg);
+                String img64Url = string.Format("data:image/" + Model.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                <img src="@img64Url" />
+            }
+        </dd>
+    </dl>
+</div>
+
+    @foreach (var review in Model.Reviews)
+    {
+        <a target="_blank" href="@Url.Action("Details", "Reviews", new { id = review.ReviewId})">
+            <h4>@review.Author: @review.PostedDate</h4>
+            <h1>@review.ContentBody.Substring(0, 100)...</h1>
+        </a>
+        <br />
+        <br /><br />
+    }
+
+<div>
+    <hr />
+    </a>
+
+    <a href="@Url.Action("Index")" class="btn btn-lg btn-default">
+        <i class="fa fa-2x fa-arrow-circle-left" aria-hidden="true"></i>
+        <span>Back to list</span>
+    </a>
+</div>

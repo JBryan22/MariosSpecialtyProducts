@@ -52,7 +52,7 @@ namespace MariosSpeciality.Models
                 }
                 rating = totalRating / totalReview;
             }
-            return rating;
+            return Math.Round(rating, 1);
         }
     }
 }

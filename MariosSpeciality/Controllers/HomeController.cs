@@ -1,5 +1,6 @@
 ﻿using MariosSpeciality.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -31,19 +32,34 @@ namespace MariosSpeciality.Controllers
             return View();
         }
 
+        public IActionResult GetReviewsForProduct(int? id)
+        {
+            var model = db.Products
+                .Include(p => p.Reviews)
+                .Where(r => r.ProductId == id)
+                //.OrderByDescending(r => r.DatePosted.Date)
+                //.ThenByDescending(r => r.DatePosted.TimeOfDay)
+                .FirstOrDefault() as Product;
+            return View(model);
+        }
+
         private List<Product> GetTopThreeProducts()
         {
-            var products = (from p in db.Products
-                            orderby p.AverageRating()
-                            select p).Take(3);
-            return products.ToList();
+            var products = db.Products
+                .Include(p => p.Reviews)
+                .OrderByDescending(p => p.AverageRating())
+                .Take(3)
+                .ToList();
+            return products;
         }
         private List<Product> GetTopThreeLatestProducts()
         {
-            var products = (from p in db.Products
-                            orderby p.DatePosted descending
-                            select p).Take(3);
-            return products.ToList();
+            var products = db.Products
+                .Include(p => p.Reviews)
+                .OrderByDescending(p => p.DatePosted)
+                .Take(3)
+                .ToList();
+            return products;
         }
         //public IActionResult Error()
         //{

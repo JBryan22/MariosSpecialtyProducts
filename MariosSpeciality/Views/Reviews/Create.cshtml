@@ -8,6 +8,8 @@
 <h1>Create</h1>
 @using (Html.BeginForm("Create", "Reviews", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @*@Html.Partial("_CommentBox")*@
+
     <h2>Review</h2><hr />
     <div class="form-horizontal">
         <div class="form-group">
@@ -16,8 +18,6 @@
             <div class="col-md-6">
                 @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Author, null, new { @class = "text-danger" })
-
-
             </div>
         </div>
         <div class="form-group">
@@ -25,9 +25,6 @@
             <div class="col-md-6">
                 @Html.TextAreaFor(model => model.ContentBody, new { @class = "form-control", @rows = 10 })
                 @Html.ValidationMessageFor(m => m.ContentBody, null, new { @class = "text-danger" })
-
-
-
             </div>
         </div>
         <div class="form-group">
@@ -35,14 +32,10 @@
             <div class="col-md-6">
                 @Html.TextBoxFor(model => model.Rating, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Rating, null, new { @class = "text-danger" })
-
-
-
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.AuthorImg, new { @class = "col-md-2 label-control" })
-
             <div class="col-md-6">
                 <input type="file" id="files" name="files" />
             </div>
@@ -61,4 +54,3 @@
         <span>Back to product</span>
     </a>
 </div>
-
