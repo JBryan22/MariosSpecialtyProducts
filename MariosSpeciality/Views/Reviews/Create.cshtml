@@ -3,14 +3,31 @@
 @{
     ViewData["Title"] = "Create";
     var productId = ViewBag.ProductId;
+    var product = ViewBag.product as Product;
 }
 
-<h1>Create</h1>
+<h1>@ViewBag.product.Name</h1>
+<div class="ratingReview">
+    @if (product.Reviews != null)
+    {
+        <h4>Total Reviews: <span class="badge">@product.Reviews.Count()</span></h4>
+        <h4>Average Rating: @product.AverageRating()</h4>
+        @for (var i = 1; i <= product.AverageRating(); i++)
+        {
+            <span class="starGlowN"></span>
+        }
+        @for (var i = (product.AverageRating() + 1); i <= 5; i++)
+        {
+            <span class="starFadeN"></span>
+        }
+
+    }
+</div>
+
+
 @using (Html.BeginForm("Create", "Reviews", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @*@Html.Partial("_CommentBox")*@
-
-    <h2>Review</h2><hr />
+    <h2>Add Your Review</h2><hr />
     <div class="form-horizontal">
         <div class="form-group">
             <input type="hidden" name="ProductId" value="@ViewBag.ProductId" />
@@ -30,6 +47,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Rating, new { @class = "col-md-2 label-control" })
             <div class="col-md-6">
+                @Html.Partial("_CommentBox") @*injecting partial view*@
                 @Html.TextBoxFor(model => model.Rating, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Rating, null, new { @class = "text-danger" })
             </div>

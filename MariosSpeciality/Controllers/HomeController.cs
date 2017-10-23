@@ -13,7 +13,7 @@ namespace MariosSpeciality.Controllers
         {
             Dictionary<string, List<Product>> model = new Dictionary<string, List<Product>>();
             model["topThreeRated"] = GetTopThreeProducts();
-            model["topThreeLates"] = GetTopThreeLatestProducts();
+            model["topThreeLatest"] = GetTopThreeLatestProducts();
             ViewBag.model = model;
             return View();
         }

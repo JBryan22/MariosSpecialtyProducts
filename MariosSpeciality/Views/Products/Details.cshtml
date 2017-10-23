@@ -7,6 +7,22 @@
     <div class="col-md-3">
         <h2>Details of</h2>
         <h4>@Model.Name</h4>
+        <div class="ratingReview">
+            @if (Model.Reviews != null)
+            {
+                <h4>Total Reviews: <span class="badge">@Model.Reviews.Count()</span></h4>
+                <h4>Average Rating: @Model.AverageRating()</h4>
+                @for (var i = 1; i <= Model.AverageRating(); i++)
+                {
+                    <span class="starGlowN"></span>
+                }
+                @for (var i = (Model.AverageRating() + 1); i <= 5; i++)
+                {
+                    <span class="starFadeN"></span>
+                }
+
+            }
+        </div>
     </div>
     <div class="col-md-6">
     </div>

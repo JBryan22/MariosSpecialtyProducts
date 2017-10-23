@@ -67,11 +67,7 @@ img.thumbnails.deckImg {
         transform: scale(1.1);
     }
 
-h2.blogTitle {
-    font-size: 44px;
-    font-family: initial;
-    font-weight: bolder;
-}
+
 
 h1 {
     font-family: initial;
@@ -94,9 +90,9 @@ div.card.product:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
-.card-title {
+/*.card-title {
         margin-left: 100px;
-    }
+    }*/
 img.reviewProduct {
     border-radius: 100px;
     height: 199px;
@@ -138,4 +134,8 @@ img.reviewProduct {
     min-width: 30px;
     min-height: 30px;
     display: inline-block;
+}
+
+div.ratingReview{
+    padding: 20px;
 }

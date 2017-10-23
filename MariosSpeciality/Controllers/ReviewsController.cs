@@ -54,6 +54,10 @@ namespace MariosSpeciality.Controllers
         public IActionResult Create(int? productId)
         {
             ViewBag.ProductId = productId;
+            EFProductRepository db = new EFProductRepository();
+            ViewBag.product = db.Products
+                .Include(p => p.Reviews)
+                .FirstOrDefault(p => p.ProductId == productId);
             //ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "ProductId");
             return View();
         }

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    int rating = 5;
 }
 
 @if(Model == null)
@@ -37,15 +38,36 @@ else
                     <div class="card-block">
                         <h4 class="card-title">@product.Name</h4>
                     </div>
-                    <div>
+                    <div class="ratingReview">
                         @if (product.Reviews != null)
                         {
                             <h4>Total Review: <span class="badge">@product.Reviews.Count()</span></h4>
                             <h4>Average Rating: @product.AverageRating()</h4>
-	                    }
+                            @for (var i = 1; i <= product.AverageRating(); i++)
+                            {
+                                <span class="starGlowN"></span>
+                            }
+                            @for (var i = (product.AverageRating() + 1); i <= 5; i++)
+                            {
+                                <span class="starFadeN"></span>
+                            }
+
+                        }
                     </div>
                 </div>
             </a>
         }
     </div>
 }
+
+
+@*<script>
+    function SCRate() {
+        for (var i = 1; i <= @rating; i++) {
+            $("#sRate" + i).attr('class', 'starGlowN');
+        }
+    }
+    $(function(){
+        SCRate();
+    });
+</script>*@

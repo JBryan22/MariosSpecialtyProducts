@@ -59,7 +59,7 @@
 <div>
 </div><hr />
 <br />
-<h2 style="text-align: center">OUR TOP THREE HIGHLY RATED PRODUCTS</h2>
+<h1 style="text-align: center">OUR TOP THREE HIGHLY RATED PRODUCTS</h1>
 <br />
 <hr />
 
@@ -70,32 +70,79 @@
         @foreach (Product item in ViewBag.model["topThreeRated"])
         {
             <div class="card">
-                <div class="card-block">
-                    <h2 class="card-title">@item.Name-@item.AverageRating()</h2>
-                    <a href="@Url.Action("GetReviewsForProduct", "Home", new { id = item.ProductId})"><p class="card-text">@item.Reviews.Count() total review(s)</p></a>
+                <div class="ratingReview">
+                    <h1 class="card-title">@item.Name-@item.AverageRating()</h1>
+
+                    @if (item.Reviews != null)
+                    {
+                        <a href="@Url.Action("GetReviewsForProduct", "Home", new { id = item.ProductId})">
+                            <p class="card-text">@item.Reviews.Count() total review(s)</p>
+                        </a>
+                        <h4>Average Rating: @item.AverageRating()</h4>
+                        @for (var i = 1; i <= item.AverageRating(); i++)
+                        {
+                            <span class="starGlowN"></span>
+                        }
+                        @for (var i = (item.AverageRating() + 1); i <= 5; i++)
+                        {
+                            <span class="starFadeN"></span>
+                        }
+
+                    }
                 </div>
-                <img class="card-img-top" src="~/images/banner1.png" alt="Card image cap">
+
+                @if (item.ProductImg != null)
+                {
+                    String img64 = Convert.ToBase64String(item.ProductImg);
+                    String img64Url = string.Format("data:image/" + item.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductId})"><img class="deckImg" src="@img64Url" alt="@item.ProductImg" /></a>
+                }
+
+
                 <hr />
                 <br />
             </div>
         }
     </div>
     <div>
-        <h2 style="text-align: center">OUR MOST RECENTLY ADDED PRODUCTS</h2>
+        <h1 style="text-align: center">OUR MOST RECENTLY ADDED PRODUCTS</h1>
         <br />
         <hr />
     </div>
 
     <div class="card-deck">
 
-        @foreach (Product item in ViewBag.model["topThreeRated"])
+        @foreach (Product item in ViewBag.model["topThreeLatest"])
         {
             <div class="card">
-                <div class="card-block">
-                    <h2 class="card-title">@item.Name-@item.AverageRating()</h2>
-                    <a href="@Url.Action("GetReviewsForProduct", "Home", new { id = item.ProductId})"><p class="card-text">@item.Reviews.Count() total review(s)</p></a>
+                <div class="ratingReview">
+                    <h1 class="card-title">@item.Name-@item.AverageRating()</h1>
+
+                    @if (item.Reviews != null)
+                    {
+                        <a href="@Url.Action("GetReviewsForProduct", "Home", new { id = item.ProductId})">
+                            <p class="card-text">@item.Reviews.Count() total review(s)</p>
+                        </a>
+                        <h4>Average Rating: @item.AverageRating()</h4>
+                        @for (var i = 1; i <= item.AverageRating(); i++)
+                        {
+                            <span class="starGlowN"></span>
+                        }
+                        @for (var i = (item.AverageRating() + 1); i <= 5; i++)
+                        {
+                            <span class="starFadeN"></span>
+                        }
+
+                    }
                 </div>
-                <img class="card-img-top" src="~/images/banner1.png" alt="Card image cap">
+
+                @if (item.ProductImg != null)
+                {
+                    String img64 = Convert.ToBase64String(item.ProductImg);
+                    String img64Url = string.Format("data:image/" + item.ProductImg + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                    <a href="@Url.Action("Details", "Products", new { id = item.ProductId})"><img class="deckImg" src="@img64Url" alt="@item.ProductImg" /></a>
+                }
+
                 <hr />
                 <br />
             </div>
@@ -104,9 +151,3 @@
 
 }
 
-
-<div>
-    <h2 style="text-align: center">OUR MOST RECENTLY ADDED PRODUCTS</h2>
-    <br />
-    <hr />
-</div>

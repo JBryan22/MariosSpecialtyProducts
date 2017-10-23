@@ -39,6 +39,7 @@ namespace MariosSpeciality.Controllers
             }
 
             var product = _context.Products
+                .Include(p => p.Reviews)
                 .SingleOrDefault(m => m.ProductId == id);
             if (product == null)
             {
